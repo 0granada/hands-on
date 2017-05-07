@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hands On - JS Essentials</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/js/monaco-editor/min/vs/editor/editor.main.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+
+        <h1>Hands On - JS Essentials</h1>
+        <div id="app">
+            <h2>Excercise: <span class="Info-exerciseNumber" > {{ exerciseNumber }} </span></h2>
+            <p>
+                {{ exerciseText }}
+            </p>
+        </div>
+        
+        <div class="Inputs">
+            <div class="Inputs-column">
+                <h3>Source</h3>
+                <div id="editorPanel" class="Inputs-source"></div>
+                <button id="btnRun" >RUN</button>
+            </div>
+            <div class="Inputs-column">
+
+                <h3>Standard Out</h3>
+                <textarea name="target" id="target" class="Inputs-target" rows="15" disabled="disabled"></textarea>
+                <button id="btnClean" >CLEAN</button>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/sprintf.js"></script>
+    <script src="/assets/js/socket.io.js"></script>
+    <script src="/assets/js/vue.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/monaco-editor/min/vs/loader.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>

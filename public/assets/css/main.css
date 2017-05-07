@@ -1,0 +1,14 @@
+
+.Inputs-column {
+    width: 49%;
+    padding: 1em 0;
+    text-align: center;
+    display: inline-block;
+}
+
+.Inputs-source,
+.Inputs-target {
+    width: 95%;
+    height: 300px;
+    text-align: left;
+}
