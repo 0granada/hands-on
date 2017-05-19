@@ -1,0 +1,13 @@
+{
+  "name": "JS Essentials",
+  "references": [
+    {
+      "name": "Javascript: The Good Parts",
+      "url": "https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742/ref=sr_1_4?s=books&ie=UTF8&qid=1495209803&sr=1-4&keywords=javascript"
+    },
+    {
+      "name": "JavaScript: The Definitive Guide",
+      "url": "https://www.amazon.com/JavaScript-Definitive-Guide-Activate-Guides/dp/0596805527/ref=pd_bxgy_14_img_2?_encoding=UTF8&pd_rd_i=0596805527&pd_rd_r=JABZHFYJS3RKCY8FB8AP&pd_rd_w=X261K&pd_rd_wg=ZKHl1&psc=1&refRID=JABZHFYJS3RKCY8FB8AP"
+    }
+  ]
+}

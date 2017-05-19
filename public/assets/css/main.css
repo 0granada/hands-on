@@ -1,4 +1,8 @@
 
+body {
+  padding-top: 50px;
+}
+
 .Inputs-column {
     width: 49%;
     padding: 1em 0;
@@ -12,3 +16,38 @@
     height: 300px;
     text-align: left;
 }
+
+.btn-run {
+    margin-top: 4px;
+}
+
+.my-sidebar {
+    background: lightslategray;
+    height: calc(100vh - 50px);
+    transition: all 0.5s ease-in-out;
+}
+
+.my-sidebar.closed {
+    width: 0;
+    overflow: hidden;
+    margin-left: -100px;
+}
+
+
+.my-sidebar,
+.my-sidebar a {
+    color: white;
+}
+
+.my-sidebar > ul > li > a:focus,
+.my-sidebar > ul > li > a:hover {
+    background: transparent;
+}
+
+.my-sidebar .active,
+.my-sidebar .active a {
+    color: lightslategray;
+    background: white;
+}
+
+

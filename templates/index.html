@@ -1,40 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hands On - JS Essentials</title>
-    <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/js/monaco-editor/min/vs/editor/editor.main.css">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-<body>
-    <div class="container">
 
-        <h1>Hands On - JS Essentials</h1>
-        <div id="app">
-            <h2>Excercise: <span class="Info-exerciseNumber" > {{ exerciseNumber }} </span></h2>
+<body>
+
+    <div id="app">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                        aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                    <a class="navbar-brand" href="#">Hands-On Trainer</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li v-bind:class="{ active: isAgendaOpen }"><a href="#" v-on:click="toggleAgenda">Agenda</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#myModal">Reference Material</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div class="col-sm-3 col-md-2 sidebar my-sidebar" v-bind:class="{ closed: !isAgendaOpen }">
+            <h2>Agenda</h2>
+            <ul class="nav nav-sidebar">
+                <li v-for="elm in agenda.list" v-bind:class="{ active: elm===agenda.current }"><a href="#"> {{ elm }} </a></li>
+            </ul>
+        </div>
+
+        <div class="container">
+
+            <h1>{{ general.name }}</h1>
+            <h2>Excercise: <span class="Info-exerciseNumber"> {{ exerciseNumber }} </span></h2>
             <p>
                 {{ exerciseText }}
             </p>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <h3>Source</h3>
+                    <div id="editorPanel" class="Inputs-source"></div>
+                    <button class="btn btn-primary btn-run" id="btnRun">RUN</button>
+                </div>
+                <div class="col-xs-12 col-md-6">
+
+                    <h3>Standard Out</h3>
+                    <textarea name="target" id="target" class="Inputs-target" rows="15" disabled="disabled"></textarea>
+                    <button class="btn btn-default" id="btnClean">CLEAN</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Reference Material</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li v-for="ref in general.references"><a v-bind:href="ref.url">{{ref.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="Inputs">
-            <div class="Inputs-column">
-                <h3>Source</h3>
-                <div id="editorPanel" class="Inputs-source"></div>
-                <button id="btnRun" >RUN</button>
-            </div>
-            <div class="Inputs-column">
-
-                <h3>Standard Out</h3>
-                <textarea name="target" id="target" class="Inputs-target" rows="15" disabled="disabled"></textarea>
-                <button id="btnClean" >CLEAN</button>
-
-            </div>
-        </div>
     </div>
 
     <script src="/assets/js/jquery.min.js"></script>
@@ -43,7 +98,9 @@
     <script src="/assets/js/vue.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/monaco-editor/min/vs/loader.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
 </body>
+
 </html>

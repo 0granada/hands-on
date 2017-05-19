@@ -1,36 +1,43 @@
 [
     {
         "number": 1,
+        "cathegory": "Input and Output",
         "text": "Using the console write in the STDOUT the string 'Hello World'.",
         "baseCode": "\nconsole.log;\n"
     },
     {
         "number": 2,
+        "cathegory": "Variables",
         "text": "Create two variables a and b, assign 2 and 4 respectively and sum them saving the result in a nuew variable c.",
         "baseCode": "\nvar w;\n"
     },
     {
         "number": 3,
+        "cathegory": "Variables",
         "text": "Create two variables a and b, assign 'Hello ' and 'world' respectively and sum them saving the result in a nuew variable c.",
         "baseCode": "\nvar a, b;\n"
     },
     {
         "number": 4,
+        "cathegory": "Variables",
         "text": "Create two variables a and b, assign 'Hello ' and 1 respectively, sum them saving the result in a new variable c and write it in the STDOUT.",
         "baseCode": "\nvar w;\nconsole.log(1);\n"
     },
     {
         "number": 5,
+        "cathegory": "Functions",
         "text": "Create a function that receive two values, a and b and return the product.",
         "baseCode": "\nfunction sum(a, b){\n};\nconsole.log(1);\n"
     },
     {
         "number": 6,
+        "cathegory": "Functions",
         "text": "Create a function that given a nuber x return the x!.",
         "baseCode": "\nfunction f(x){\n};\nconsole.log(f(1));\n"
     },
     {
         "number": 7,
+        "cathegory": "Classes",
         "text": "Create a class Mamal.",
         "baseCode": "\nfunction M(){\n\tthis.a = 1;\n};\nvar inst = new M();\nconsole.log(inst);\n"
     }

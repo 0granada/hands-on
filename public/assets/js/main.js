@@ -2,6 +2,7 @@ function loadWebSocket(app) {
   var socket = io(window.location.href);
   socket.on('next', function() {
     loadCurrentExcercise(app);
+    loadAgenda(app);
   });
 }
 
@@ -18,6 +19,12 @@ function loadCurrentExcercise(app) {
   });
 }
 
+function loadGeneralInfo(app) {
+  $.get("/general", function(res) {
+    app.general = res;
+  });
+}
+
 function loadEditor() {
   require.config({ paths: { vs: "/assets/js/monaco-editor/min/vs" } });
   require(["vs/editor/editor.main"], function() {
@@ -30,15 +37,31 @@ function loadEditor() {
   });
 }
 
+function loadAgenda(app) {
+  $.get("/agenda", function(res) {
+    app.agenda = res;
+  });
+}
+
 function prepareApp() {
   var app = new Vue({
     el: "#app",
     data: {
+      general: {},
       exerciseNumber: 1,
-      exerciseText: "Lorem ipsum dolor sit amet..."
+      exerciseText: "...",
+      agenda: [],
+      isAgendaOpen: false
+    },
+    methods: {
+      toggleAgenda: function(){
+        this.isAgendaOpen = !this.isAgendaOpen;
+      }
     }
   });
+  loadGeneralInfo(app);
   loadCurrentExcercise(app);
+  loadAgenda(app);
   return app;
 }
 
